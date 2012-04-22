@@ -379,6 +379,30 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
       </article>
 
       <article class="nobackground">
+        <h3>Make transaction boundaries explicit</h3>
+        <br>
+        <div class="build">
+          <p>GOOS suggests to use unit of work pattern with a transactor.</p>
+          <pre class="java prettyprint">
+public interface UnitOfWork {
+  void work() throws Exception;
+}</pre>
+          <pre class="java prettyprint">
+public class JpaTransactor {
+  // get entity manager of application
+  public void perform(UnitOfWork unitOfWork) throws Exception {
+    EntityTransaction transaction = entityManager.getTransaction();
+    transaction.begin();
+    try {
+      unitOfWork.work();
+      transaction.commit();
+    } catch // rollback on exception...
+  }
+}</pre>
+        </div>
+      </article>
+
+      <article class="nobackground">
         <h1>
           Round-tripping persistent objects
         </h1>
