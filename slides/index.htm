@@ -192,7 +192,6 @@
 
       <article class="nobackground">
         <h3>Test behavior, not methods</h3>
-        <div class="build">
         <pre class="java prettyprint">
 public User {
   // fields, getter and setter
@@ -201,6 +200,7 @@ public User {
     return this;
   }
 }</pre>
+        <div class="build">
         <pre class="java prettyprint">
 @Test
 public void testCelebrateBirthday() {
@@ -214,7 +214,6 @@ public void testCelebrateBirthday() {
 
       <article class="nobackground">
         <h3>Test behavior, not methods</h3>
-        <div class="build">
         <pre class="java prettyprint">
 @Test
 public void <span class="highlight-bad">testCelebrateBirthday</span>() {
@@ -224,6 +223,7 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
   <span class="highlight-bad">assertTrue(user == userAfterBirthday);</span>
   <span class="highlight-bad">assertEquals(user.getAge() + 1, userAfterBirthday.getAge());</span>
 }</pre>
+        <div class="build">
         <pre class="java prettyprint">
 @Test public void <span class="highlight-good">incrementAgeWhenCelebrateBirthday</span>() {
   User userAfterBirthday = user.celebrateBirthday();
