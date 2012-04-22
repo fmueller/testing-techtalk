@@ -191,6 +191,52 @@
       </article>
 
       <article class="nobackground">
+        <h3>Test behavior, not methods</h3>
+        <div class="build">
+        <pre class="java prettyprint">
+public User {
+  // fields, getter and setter
+  public User celebrateBirthday() {
+    age++;
+    return this;
+  }
+}</pre>
+        <pre class="java prettyprint">
+@Test
+public void testCelebrateBirthday() {
+  User user = newUser().withAge(18).build();
+  User userAfterBirthday = user.celebrateBirthday();
+
+  assertTrue(user == userAfterBirthday);
+  assertEquals(user.getAge() + 1, userAfterBirthday.getAge());
+}</pre></div>
+      </article>
+
+      <article class="nobackground">
+        <h3>Test behavior, not methods</h3>
+        <div class="build">
+        <pre class="java prettyprint">
+@Test
+public void <span class="highlight-bad">testCelebrateBirthday</span>() {
+  User user = newUser().withAge(18).build();
+  User userAfterBirthday = user.celebrateBirthday();
+
+  <span class="highlight-bad">assertTrue(user == userAfterBirthday);</span>
+  <span class="highlight-bad">assertEquals(user.getAge() + 1, userAfterBirthday.getAge());</span>
+}</pre>
+        <pre class="java prettyprint">
+@Test public void <span class="highlight-good">incrementAgeWhenCelebrateBirthday</span>() {
+  User userAfterBirthday = user.celebrateBirthday();
+  <span class="highlight-good">assertEquals(user.getAge() + 1, userAfterBirthday.getAge());</span>
+}
+
+@Test public void <span class="highlight-good">sameUserAfterCelebrateBirthday</span>() {
+  User userAfterBirthday = user.celebrateBirthday();
+  <span class="highlight-good">assertTrue(user == userAfterBirthday);</span>
+}</pre></div>
+      </article>
+
+      <article class="nobackground">
         <h1>
           Write the tests you want to read
         </h1>
