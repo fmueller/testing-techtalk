@@ -204,7 +204,7 @@ public User {
         <pre class="java prettyprint">
 @Test
 public void testCelebrateBirthday() {
-  User user = newUser().withAge(18).build();
+  User user = new User();
   User userAfterBirthday = user.celebrateBirthday();
 
   assertTrue(user == userAfterBirthday);
@@ -217,7 +217,7 @@ public void testCelebrateBirthday() {
         <pre class="java prettyprint">
 @Test
 public void <span class="highlight-bad">testCelebrateBirthday</span>() {
-  User user = newUser().withAge(18).build();
+  User user = new User();
   User userAfterBirthday = user.celebrateBirthday();
 
   <span class="highlight-bad">assertTrue(user == userAfterBirthday);</span>
