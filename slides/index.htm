@@ -348,6 +348,25 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
       </article>
 
       <article class="nobackground">
+        <h3>To commit or not to commit?</h3>
+        <br>
+        <div class="build">
+          <p>Common pattern:</p>
+          <ul class="build">
+            <li>open a transaction</li>
+            <li>run the test</li>
+            <li>roll the transaction back</li>
+          </ul>
+          <br>
+        </div>
+        <div class="build">
+          <p>BUT:</p>
+          <p>Without hitting the database you don't know how your persistence code really works.</p>
+          <p>Answer: Commit</p>
+        </div>
+      </article>
+
+      <article class="nobackground">
         <h1>
           Clean up persistent data at start of a test
         </h1>
