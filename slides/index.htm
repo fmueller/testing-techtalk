@@ -18,6 +18,17 @@
 
     <meta charset='utf-8'>
     <script src='slides.js'></script>
+    <style type="text/css">
+        .highlight-bad{
+            background-color: rgba(255,0,0,0.2);
+            display: inline-block;
+        }
+
+        .highlight-good{
+            background-color: rgba(0,255,0,0.2);
+            display: inline-block;
+        }
+    </style>
   </head>
 
   <body style='display: none'>
@@ -52,10 +63,39 @@
         <p><img style="max-width: 100%; max-height: 100%" src="pics/Milky_Way_IR_Spitzer.jpg" alt="Milky_Way_IR_Spitzer"></p>
       </article>
 
+      <article class="bigger">
+        <h3>What's the point of testing?</h3>
+        <ul class="build">
+          <li>Proofing correctness?</li>
+          <li>Detect regression?</li>
+          <li>Enable safe refactoring?</li>
+          <li>Feedback loop?</li>
+          <li>Better design?</li>
+        </ul>
+        <br>
+        <div class="build">
+          <p><big>Somehow all points together.</big></p>
+        </div>
+      </article>
+
       <article class="nobackground">
         <h1>
+          For me:<br>
           It's all about feedback
         </h1>
+      </article>
+
+      <article class="nobackground">
+        <h3>It's all about feedback</h3>
+        <br>
+        <div class="build">
+          <p>Feedback about:</p>
+          <ul class="build">
+            <li>correctness of the code</li>
+            <li>possibly introduced regression bugs</li>
+            <li>design is good (which means code is easy testable)</li>
+          </ul>
+        </div>
       </article>
 
       <article class="nobackground">
