@@ -260,9 +260,47 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
       </article>
 
       <article class="nobackground">
+        <h3>One assert per test</h3>
+        <br>
+        <div class="build">
+          <p>Are you kidding?</p>
+          <p>No. ;-)</p>
+        </div>
+        <br>
+        <div class="build">
+          <span>Because one assert per test:</span>
+          <ul class="build">
+            <li>simplifies naming of tests</li>
+            <li>forces you to think more about your tests</li>
+            <li>causes less brittle tests</li>
+            <li>gives you the ability that you know exactly what is wrong if one test fails</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="nobackground">
         <h1>
           Watch the test fail
         </h1>
+      </article>
+
+      <article class="nobackground">
+        <h3>Watch the test fail</h3>
+        <br>
+        <div class="build">
+          <p>The quality of a test is how good it points you to the failure in your system if it fails.</p>
+        </div>
+        <br>
+        <div class="build">
+          <p>So, improve the TDD cycle:</p>
+        </div>
+        <ol class="build">
+          <li>Write a test</li>
+          <li>Watch it fail</li>
+          <li><big>Improve the failure message until you know exactly why it is failing</big></li>
+          <li>Write code to make the test pass</li>
+          <li>Refactor and go to one</li>
+        </ol>
       </article>
 
       <article class="fill">
@@ -290,12 +328,6 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
             <li>so, problems that hit you in maintenance and further development</li>
           </ul>
         </div>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          Separate normal tests from regression tests
-        </h1>
       </article>
 
       <article class="fill">
