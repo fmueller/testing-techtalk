@@ -357,8 +357,8 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
             <li>run the test</li>
             <li>roll the transaction back</li>
           </ul>
-          <br>
         </div>
+          <br>
         <div class="build">
           <p>BUT:</p>
           <p>Without hitting the database you don't know how your persistence code really works.</p>
@@ -415,11 +415,87 @@ public class JpaTransactor {
 
       <article class="nobackground">
         <h2>
-          <q>The main thing that distinguishes legacy code from non-legacy  code is tests, or rather a lack of tests.</q>
+          <q>The main thing that distinguishes legacy code from non-legacy code is tests, or rather a lack of tests.</q>
           <div class="author">
             Michael Feathers
           </div>
         </h2>
+      </article>
+
+      <article class="nobackground">
+        <h1>
+          We produce legacy code every single day.
+        </h1>
+      </article>
+
+      <article class="nobackground">
+        <h1>
+          Legacy code is extremly hard to test.
+        </h1>
+      </article>
+
+      <article class="nobackground">
+        <h1>
+          Dependencies of classes are not explicit.
+        </h1>
+      </article>
+
+      <article class="nobackground">
+        <h3>Dependencies of classes are not explicit.</h3>
+        <pre class="java prettyprint">
+public class Account {
+
+  private TransferService transferService;
+
+  public Account() {
+    <span class="highlight-bad">DataSource dataSource = new DataSource(SQLConfig.getInstance());</span>
+    <span class="highlight-bad">transferService = new TransferService(dataSource);</span>
+  }
+
+  public Receipt transferToThis(Account other, BigDecimal amount) {
+    return transferService.performTransfer(other, this, amount);
+  }
+}</pre>
+      </article>
+
+      <article class="nobackground">
+        <h3>Dependencies of classes are not explicit.</h3>
+        <ul class="build">
+          <li>
+            set up the class for test is hard:
+            <br>
+            <ul class="build">
+              <li>database has to be available</li>
+              <li>database configuration has to be correct</li>
+            </ul>
+          </li>
+          <li>hard to test in isolation</li>
+        </ul>
+      </article>
+
+      <article class="nobackground">
+        <h3>Dependencies of classes are not explicit.</h3>
+        <pre class="java prettyprint">
+public class Account {
+
+  private TransferService transferService;
+
+  public <span class="highlight-good">Account(TransferService transferService)</span> {
+    <span class="highlight-good">this.transferService = transferService;</span>
+  }
+
+  public Receipt transferToThis(Account other, BigDecimal amount) {
+    return transferService.performTransfer(other, this, amount);
+  }
+}</pre>
+      </article>
+
+      <article class="nobackground">
+        <h3>That was only the tip of the iceberg.</h3>
+        <br>
+        <p style="text-align: center">
+          <img style="height: 500px" src="pics/feathers-book.jpg" alt="feathers-book">
+        </p>
       </article>
 
       <article class="nobackground">
