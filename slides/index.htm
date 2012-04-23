@@ -195,48 +195,38 @@
 
       <article class="nobackground">
         <h3>Test behavior, not methods</h3>
-        <pre class="java prettyprint">
-public User {
-  // fields, getter and setter
-  public User celebrateBirthday() {
-    age++;
-    return this;
-  }
-}</pre>
-        <div class="build">
+        <br>
+        <p>Simplified example:</p>
         <pre class="java prettyprint">
 @Test
-public void testCelebrateBirthday() {
-  User user = new User();
-  User userAfterBirthday = user.celebrateBirthday();
-
-  assertTrue(user == userAfterBirthday);
-  assertEquals(user.getAge() + 1, userAfterBirthday.getAge());
-}</pre></div>
+public void <span class="highlight-bad">testAddDays</span>() {
+  assertEquals(2, newDate(2012, 1, 1).addDays(1).getDay());
+  assertEquals(29, newDate(2012, 2, 28).addDays(1).getDay());
+  assertEquals(1, newDate(2012, 2, 29).addDays(1).getDay());
+  assertEquals(2013, newDate(2012, 12, 31).addDays(1).getYear());
+  assertEquals(3, newDate(2012, 2, 29).addDays(1).getMonth());
+}</pre>
       </article>
 
       <article class="nobackground">
         <h3>Test behavior, not methods</h3>
         <pre class="java prettyprint">
 @Test
-public void <span class="highlight-bad">testCelebrateBirthday</span>() {
-  User user = new User();
-  User userAfterBirthday = user.celebrateBirthday();
-
-  <span class="highlight-bad">assertTrue(user == userAfterBirthday);</span>
-  <span class="highlight-bad">assertEquals(user.getAge() + 1, userAfterBirthday.getAge());</span>
-}</pre>
-        <div class="build">
-        <pre class="java prettyprint">
-@Test public void <span class="highlight-good">incrementAgeWhenCelebrateBirthday</span>() {
-  User userAfterBirthday = user.celebrateBirthday();
-  <span class="highlight-good">assertEquals(user.getAge() + 1, userAfterBirthday.getAge());</span>
+public void <span class="highlight-good">incrementDayWhenAddOneDay</span>() {
+  assertEquals(2, newDate(2012, 1, 1).addDays(1).getDay());
 }
 
-@Test public void <span class="highlight-good">sameUserAfterCelebrateBirthday</span>() {
-  User userAfterBirthday = user.celebrateBirthday();
-  <span class="highlight-good">assertTrue(user == userAfterBirthday);</span>
-}</pre></div>
+@Test
+public void <span class="highlight-good">incrementYearOnEndOfYear</span>() {
+  assertEquals(2013, newDate(2012, 12, 31).addDays(1).getYear());
+}
+
+@Test
+public void <span class="highlight-good">beAwareOfLeapYears</span>() {
+  assertEquals(29, newDate(2012, 2, 28).addDays(1).getDay());
+  assertEquals(1, newDate(2012, 2, 29).addDays(1).getDay());
+  assertEquals(3, newDate(2012, 2, 29).addDays(1).getMonth());
+}</pre>
       </article>
 
       <article class="nobackground">
