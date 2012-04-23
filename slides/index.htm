@@ -258,17 +258,24 @@ public void <span class="highlight-bad">testCelebrateBirthday</span>() {
         <h3>One assert per test</h3>
         <br>
         <div class="build">
-          <p>Are you kidding?</p>
-          <p>No. ;-)</p>
+          <span>Are you kidding?</span>
+          <span>No. ;-)</span>
         </div>
         <br>
         <div class="build">
           <span>Because one assert per test:</span>
           <ul class="build">
             <li>simplifies naming of tests</li>
-            <li>forces you to think more about your tests</li>
             <li>causes less brittle tests</li>
-            <li>gives you the ability that you know exactly what is wrong if one test fails</li>
+            <li>forces you to think more about your tests</li>
+          </ul>
+        </div>
+        <br>
+        <div class="build">
+          <span>Unreachable goal, BUT:</span>
+          <ul class="build">
+            <li>DRY, implement own assert methods</li>
+            <li>use matcher libraries to increase expressiveness</li>
           </ul>
         </div>
       </article>
