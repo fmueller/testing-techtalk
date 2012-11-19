@@ -41,7 +41,7 @@
         <p>
           Felix Müller
           <br>
-          April 24th, 2012
+          December 7th, 2012
         </p>
         <p>
           <small>github.com/fmueller/testing-techtalk</small>
@@ -54,7 +54,7 @@
       </article>
 
       <article class="nobackground">
-        <h3>This talk was heavily inspired by GOOS.</h3>
+        <h3>This talk is heavily inspired by GOOS.</h3>
         <br>
         <p style="text-align: center">
           <img style="height: 500px" src="pics/goos-book.jpg" alt="goos-book">
@@ -141,6 +141,8 @@
         <h1>
           Design from inputs to outputs
         </h1>
+        <br>
+        <small>Outside-in Development</small>
       </article>
 
       <article class="fill">
@@ -224,8 +226,8 @@ public void <span class="highlight-good">incrementYearOnEndOfYear</span>() {
 @Test
 public void <span class="highlight-good">beAwareOfLeapYears</span>() {
   assertEquals(29, newDate(2012, 2, 28).addDays(1).getDay());
-  assertEquals(1, newDate(2012, 2, 29).addDays(1).getDay());
   assertEquals(3, newDate(2012, 2, 29).addDays(1).getMonth());
+  assertEquals(1, newDate(2012, 2, 29).addDays(1).getDay());
 }</pre>
       </article>
 
@@ -248,7 +250,7 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
           <ul class="build">
             <li>simplifies naming of tests</li>
             <li>causes less brittle tests</li>
-            <li>forces you to think more about your tests</li>
+            <li>forces you to think more about your tests (more focus)</li>
           </ul>
         </div>
         <br>
@@ -259,6 +261,43 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
             <li>use matcher libraries to increase expressiveness</li>
           </ul>
         </div>
+      </article>
+
+      <article class="nobackground">
+        <h3>One assert per test</h3>
+        <br>
+        <p>To use as less logical asserts per test as possible is a reachable goal.</p>
+        <br>
+        <div class="build">
+            <p>So, what could be improved in this simplified test method?</p>
+            <pre class="java prettyprint">
+@Test
+public void beAwareOfLeapYears() {
+  <span class="highlight-bad">assertEquals</span>(29, newDate(2012, 2, 28).addDays(1).<span class="highlight-bad">getDay()</span>);
+  <span class="highlight-bad">assertEquals</span>(3, newDate(2012, 2, 29).addDays(1).<span class="highlight-bad">getMonth()</span>);
+  <span class="highlight-bad">assertEquals</span>(1, newDate(2012, 2, 29).addDays(1).<span class="highlight-bad">getDay()</span>);
+}</pre>
+        </div>
+      </article>
+
+      <article class="nobackground">
+        <h3>One assert per test</h3>
+        <br>
+        <pre class="java prettyprint">
+@Test
+public void beAwareOfLeapYears() {
+  <span class="highlight-good">assertDay</span>(newDate(2012, 2, 28).addDays(1), 29);
+  <span class="highlight-good">assertMonth</span>(newDate(2012, 2, 29).addDays(1), 3);
+  <span class="highlight-good">assertDay</span>(newDate(2012, 2, 29).addDays(1), 1);
+}
+
+private void <span class="highlight-good">assertDay</span>(MyImaginaryDate date, int expectedDay) {
+  assertEquals(date.getDay(), expectedDay);
+}
+
+private void <span class="highlight-good">assertMonth</span>(MyImaginaryDate date, int expectedMonth) {
+  assertEquals(date.getMonth(), expectedMonth);
+}</pre>
       </article>
 
       <article class="nobackground">
@@ -282,7 +321,7 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
           <li>Watch it fail</li>
           <li><big>Improve the failure message until you know exactly why it is failing</big></li>
           <li>Write code to make the test pass</li>
-          <li>Refactor and go to one</li>
+          <li>Refactor and go to first point</li>
         </ol>
       </article>
 
@@ -345,6 +384,8 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
         <h1>
           To commit or not to commit?
         </h1>
+        <br>
+        <small>(That is the question)</small>
       </article>
 
       <article class="nobackground">
@@ -369,7 +410,7 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
       <article class="nobackground">
         <h1>
           If committing in tests:<br>
-          Clean up persistent data at start of a test
+          Clean up persistent data before each test, not after
         </h1>
       </article>
 
@@ -504,9 +545,15 @@ public class Account {
       </article>
 
       <article class="nobackground">
-        <h1>
-          Thanks for listening!
-        </h1>
+        <h3>Thanks for listening!</h3>
+        <br>
+        <p>If you want to stay in contact:</p>
+        <br>
+        <div>
+            <p>felix.mueller@adesso.de</p>
+            <p>@fmueller_bln</p>
+            <p>gplus.to/fmueller</p>
+        </div>
       </article>
 
       <article class="smaller">
