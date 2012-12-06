@@ -288,6 +288,55 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
 
       <article class="nobackground">
         <h1>
+          Structure your test implementation
+        </h1>
+      </article>
+
+      <article class="nobackground">
+        <h3>Structure your test implementation</h3>
+        <br>
+        <div class="build">
+          <p>Common anit-pattern these days:</p>
+          <br>
+            <pre class="java prettyprint">
+@Test
+public void someTestMethod() {
+  // setup system
+  // assert something
+  // next action
+  // check some state
+  // assert something
+  // ...
+}
+</pre>
+        </div>
+      </article>
+
+
+      <article class="nobackground">
+        <h3>Structure your test implementation</h3>
+        <br>
+        Per test always:
+        <br>
+        <ul class="build">
+          <li>setup system for test</li>
+          <li>do your test action</li>
+          <li>assert expected system state</li>
+        </ul>
+        <div class="build">
+          <pre class="java prettyprint">
+@Test
+public void someTestMethod() {
+  // given
+  // when
+  // then
+}
+</pre>
+        </div>
+      </article>
+
+      <article class="nobackground">
+        <h1>
           One assert per test
         </h1>
       </article>
