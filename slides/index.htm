@@ -36,12 +36,15 @@
 
       <article class="nobackground">
         <h1>
-          Testing Knowledge
+          Testing, do you speak it?
         </h1>
+        <p>
+          <small>Java Edition</small>
+        </p>
         <p>
           Felix Müller
           <br>
-          December 7th, 2012
+          April 5th, 2013
         </p>
         <p>
           <small>github.com/fmueller/testing-techtalk</small>
@@ -56,24 +59,6 @@
       <article class="fill">
         <h3>Goal for this talk</h3>
         <p><img src="pics/strongest-in-the-forest.jpg" alt="strongest-in-the-forest"></p>
-      </article>
-
-      <article class="nobackground">
-        <h3>This talk is heavily inspired by GOOS.</h3>
-        <br>
-        <p style="text-align: center">
-          <img style="height: 500px" src="pics/goos-book.jpg" alt="goos-book">
-        </p>
-      </article>
-
-      <article class="nobackground">
-        <h1>Agenda</h1>
-        <ol>
-          <li>The Bigger Picture</li>
-          <li>Testing in Detail</li>
-          <li>Testing your Persistence Code</li>
-          <li>Testing in Legacy Code</li>
-        </ol>
       </article>
 
       <article class="nobackground">
@@ -106,46 +91,14 @@
       </article>
 
       <article class="fill">
-        <h3>Part 1: The Bigger Picture</h3>
+        <h3>The Bigger Picture</h3>
         <p><img style="max-width: 100%; max-height: 100%" src="pics/Milky_Way_IR_Spitzer.jpg" alt="Milky_Way_IR_Spitzer"></p>
       </article>
 
       <article class="nobackground">
-        <h3>What's the point of testing?</h3>
-        <ul class="build">
-          <li>Proofing correctness?</li>
-          <li>Detect regression?</li>
-          <li>Enable safe refactoring?</li>
-          <li>Feedback loop?</li>
-          <li>Better design?</li>
-        </ul>
-        <br>
-        <div class="build">
-          <p><big>Somehow all points together.</big></p>
-        </div>
-      </article>
-
-      <article class="nobackground">
         <h1>
-          For me:<br>
-          It's all about feedback
+          Testing is all about feedback
         </h1>
-      </article>
-
-      <article class="nobackground">
-        <h3>It's all about feedback</h3>
-        <br>
-        <div class="build">
-          <p>Feedback about:</p>
-          <ul class="build">
-            <li>correctness of the code</li>
-            <li>possibly introduced regression bugs</li>
-            <li>quality of code and its design</li>
-          </ul>
-          <br>
-          <p>Who thinks I forgot something?</p>
-          <p><strong>Business value?</strong></p>
-        </div>
       </article>
 
       <article class="nobackground">
@@ -155,7 +108,7 @@
           <img style="width: 500px" src="pics/tdd-cycle.png" alt="tdd-cycle">
         </p>
         <br>
-        <div class="build">
+        <div>
           <span>But is this enough?</span>
           <span>...</span>
           <span><b>NO</b></span>
@@ -167,7 +120,7 @@
           TDD is only for developers
         </h1>
         <br>
-        <small>Customers and managers do not care about it</small>
+        <small>Clients and managers do not care about it</small>
       </article>
 
       <article class="nobackground">
@@ -192,34 +145,9 @@
         </h1>
       </article>
 
-      <article class="nobackground">
-        <h1>
-          Design from inputs to outputs
-        </h1>
-        <br>
-        <small>Outside-in Development</small>
-      </article>
-
       <article class="fill">
         <h3>How to kick-start this whole testing stuff?</h3>
         <p><img style="max-width: 100%; max-height: 100%" src="pics/Space_Shuttle_Columbia_launches.jpg" alt="Space_Shuttle_Columbia_launches"></p>
-      </article>
-
-      <article class="nobackground">
-        <h3>How to kick-start this whole testing stuff?</h3>
-        <br>
-        <p>In real world you have to deal with real world problems:</p>
-        <ul class="build">
-          <li>production-like systems are not running at beginning of project</li>
-          <li>brittle staging systems</li>
-          <li>distributed knowledge about infrastructure</li>
-          <li>many 3rd party systems are not always available</li>
-          <li>bad specification of systems and libraries you use</li>
-        </ul>
-        <br>
-        <div class="build">
-          <p><big>Nearly <b>impossible</b> to write end-to-end tests.</big></p>
-        </div>
       </article>
 
       <article class="fill">
@@ -227,40 +155,20 @@
         <p><img style="max-width: 100%; max-height: 100%" src="pics/walking-skeleton.jpg" alt="walking-skeleton"></p>
       </article>
 
-      <article class="nobackground">
-        <h3>Start with a walking skeleton</h3>
-        <br>
-        A walking skeleton is:
-        <ul class="build">
-          <li>automatically buildable and deployable</li>
-          <li>automatically <b>testable</b></li>
-          <li>start point for outside-in development</li>
-        </ul>
-        <br>
-        <div class="build">
-          <p>A walking skeleton can:</p>
-        </div>
-        <ul class="build">
-          <li>be valuable business action that is easy to implement</li>
-          <li>help to measure performance of the team</li>
-          <li>identifiy problems with tools or libraries early</li>
-        </ul>
-      </article>
-
       <article class="fill">
-        <h3>Part 2: Testing in Detail</h3>
+        <h3>Testing in Detail</h3>
         <p><img style="max-width: 100%; max-height: 100%" src="pics/f-microscopy.jpg" alt="f-microscopy"></p>
       </article>
 
       <article class="nobackground">
         <h3>About Unit Tests: F.I.R.S.T Principle</h3>
         <br>
-        <dl class="build">
-            <dt><strong>F</strong>ast</dt><dd>Run hundreds or thousands per second</dd>
-            <dt><strong>I</strong>solated</dt><dd>Failure reasons become obvious</dd>
-            <dt><strong>R</strong>eliable</dt><dd>Run repeatably in any order, any time</dd>
-            <dt><strong>S</strong>elf-validating</dt><dd>No manual evaluation required</dd>
-            <dt><strong>T</strong>imely</dt><dd>Written before the code</dd>
+        <dl>
+            <dt><big>F</big>ast</dt><dd>Run hundreds or thousands per second</dd>
+            <dt><big>I</big>solated</dt><dd>Failure reasons become obvious</dd>
+            <dt><big>R</big>eliable</dt><dd>Run repeatably in any order, any time</dd>
+            <dt><big>S</big>elf-validating</dt><dd>No manual evaluation required</dd>
+            <dt><big>T</big>imely</dt><dd>Written before the code</dd>
         </dl>
       </article>
 
@@ -315,8 +223,8 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
       <article class="nobackground">
         <h3>Structure your test implementation</h3>
         <br>
-        <div class="build">
-          <p>Common anti-pattern these days:</p>
+        <div>
+          <p>Common anti-pattern:</p>
           <br>
             <pre class="java prettyprint">
 @Test
@@ -332,18 +240,17 @@ public void someTestMethod() {
         </div>
       </article>
 
-
       <article class="nobackground">
         <h3>Structure your test implementation</h3>
         <br>
         Per test always:
         <br>
-        <ul class="build">
+        <ul>
           <li>setup system for test</li>
           <li>do your test action</li>
           <li>assert expected system state</li>
         </ul>
-        <div class="build">
+        <div>
           <pre class="java prettyprint">
 @Test
 public void someTestMethod() {
@@ -357,42 +264,16 @@ public void someTestMethod() {
 
       <article class="nobackground">
         <h1>
-          One assert per test
+          One (logical) assert per test
         </h1>
+        <br>
+        <small>Use own assert methods and matcher libraries</small>
       </article>
 
       <article class="nobackground">
-        <h3>One assert per test</h3>
+        <h3>One (logical) assert per test</h3>
         <br>
-        <div class="build">
-          <span>Are you kidding?</span>
-          <span>No. ;-)</span>
-        </div>
-        <br>
-        <div class="build">
-          <span>Because one assert per test:</span>
-          <ul class="build">
-            <li>simplifies naming of tests</li>
-            <li>causes less brittle tests</li>
-            <li>forces you to think more about your tests (more focus)</li>
-          </ul>
-        </div>
-        <br>
-        <div class="build">
-          <span>Not always possible, unreachable goal, BUT:</span>
-          <ul class="build">
-            <li>DRY, implement own assert methods</li>
-            <li>use matcher libraries to increase expressiveness</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="nobackground">
-        <h3>One assert per test</h3>
-        <br>
-        <p>To use as less logical asserts per test as possible is a reachable goal.</p>
-        <br>
-        <div class="build">
+        <div>
             <p>So, what could be improved in this simplified test method?</p>
             <pre class="java prettyprint">
 @Test
@@ -406,7 +287,7 @@ public void jsonConverterShouldTransformIntoCorrectPerson() {
       </article>
 
       <article class="nobackground">
-        <h3>One assert per test</h3>
+        <h3>One (logical) assert per test</h3>
         <br>
         <pre class="java prettyprint">
 @Test
@@ -430,14 +311,7 @@ private void assertPersonEquals(Person expected, Person actual) {
       <article class="nobackground">
         <h3>Watch the test fail</h3>
         <br>
-        <div class="build">
-          <p>The quality of a test is how good it points you to the failure in your system if it fails.</p>
-        </div>
-        <br>
-        <div class="build">
-          <p>So, improve the TDD cycle:</p>
-        </div>
-        <ol class="build">
+        <ol>
           <li>Write a test</li>
           <li>Watch it fail</li>
           <li><big>Improve the failure message until you know exactly why it is failing</big></li>
@@ -456,219 +330,11 @@ private void assertPersonEquals(Person expected, Person actual) {
       </article>
 
       <article class="nobackground">
-        <h3>Listen to the tests</h3>
-        <br>
-        <div class="build">
-          <p>If something is difficult to test, ask yourself:</p>
-          <ul class="build">
-            <li>not only how to test it</li>
-            <li>also <big><b>why</b></big> is it hard to test</li>
-          </ul>
-        </div>
-        <br>
-        <div class="build">
-          <p>Often a sign for:</p>
-          <ul class="build">
-            <li>design issues</li>
-            <li>tight coupling</li>
-            <li>low cohesion</li>
-            <li>so, problems that hit you in maintenance and further development</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="nobackground">
         <h1>
           Write the tests you want to read
         </h1>
-      </article>
-
-      <article class="nobackground">
-        <h3>Write the tests you want to read</h3>
-        <ul class="build">
-          <li>test code is as important as production code (maybe more?)</li>
-          <li>review your test code continuously</li>
-          <li>refactor your test code continuously</li>
-          <li>recognize test code as the documentation you always missed</li>
-          <li>why not implement own dsl only for tests?</li>
-        </ul>
-      </article>
-
-      <article class="fill">
-        <h3>Part 3: Testing your Persistence Code</h3>
-        <p><img style="max-width: 100%; max-height: 100%" src="pics/Mountain.jpg" alt="Mountain"></p>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          Isolate tests that deal with persistent state
-        </h1>
         <br>
-        <small>Not only for databases</small>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          To commit or not to commit?
-        </h1>
-        <br>
-        <small>(That is the question)</small>
-      </article>
-
-      <article class="nobackground">
-        <h3>To commit or not to commit?</h3>
-        <br>
-        <div class="build">
-          <p>Common pattern:</p>
-          <ul class="build">
-            <li>start a transaction</li>
-            <li>run the test</li>
-            <li>roll the transaction back</li>
-          </ul>
-        </div>
-        <br>
-        <div class="build">
-          <p>BUT:</p>
-          <p>Without hitting the database you don't know how your persistence code really works.</p>
-          <p>Answer: <b>It depends</b></p>
-        </div>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          If committing in tests:<br>
-          Clean up persistent data before each test, not after
-        </h1>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          Make transaction boundaries explicit
-        </h1>
-      </article>
-
-      <article class="nobackground">
-        <h3>Make transaction boundaries explicit</h3>
-        <br>
-        <div class="build">
-          <p>GOOS suggests to use unit of work pattern with a transactor.</p>
-          <pre class="java prettyprint">
-public interface UnitOfWork {
-  void work() throws Exception;
-}</pre>
-          <pre class="java prettyprint">
-public class JpaTransactor {
-  // get entity manager of application
-  public void perform(UnitOfWork unitOfWork) throws Exception {
-    EntityTransaction transaction = entityManager.getTransaction();
-    transaction.begin();
-    try {
-      unitOfWork.work();
-      transaction.commit();
-    } catch // rollback on exception...
-  }
-}</pre>
-        </div>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          Round-tripping persistent objects
-        </h1>
-      </article>
-
-      <article class="fill">
-        <h3>Part 4: Testing in Legacy Code</h3>
-        <p><img style="max-width: 100%; max-height: 100%" src="pics/iceland-volcano-eruption.jpg" alt="iceland-volcano-eruption"></p>
-      </article>
-
-      <article class="nobackground">
-        <h2>
-          <q>The main thing that distinguishes legacy code from non-legacy code is tests, or rather a lack of tests.</q>
-          <div class="author">
-            Michael Feathers
-          </div>
-        </h2>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          We produce legacy code every single day.
-        </h1>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          Legacy code is extremly hard to test.
-        </h1>
-      </article>
-
-      <article class="nobackground">
-        <h1>
-          One smell in legacy code:<br>
-          Dependencies of classes are not explicit.
-        </h1>
-      </article>
-
-      <article class="nobackground">
-        <h3>Dependencies of classes are not explicit.</h3>
-        <pre class="java prettyprint">
-public class Account {
-
-  private TransferService transferService;
-
-  public Account() {
-    <span class="highlight-bad">DataSource dataSource = new DataSource(SQLConfig.getInstance());</span>
-    <span class="highlight-bad">transferService = new TransferService(dataSource);</span>
-  }
-
-  public Receipt transferToThis(Account other, BigDecimal amount) {
-    return transferService.performTransfer(other, this, amount);
-  }
-}</pre>
-      </article>
-
-      <article class="nobackground">
-        <h3>Dependencies of classes are not explicit.</h3>
-        <ul class="build">
-          <li>
-            set up the class for test is hard:
-            <br>
-            <ul class="build">
-              <li>database has to be available</li>
-              <li>database configuration has to be correct</li>
-            </ul>
-          </li>
-          <li>hard to test in isolation</li>
-        </ul>
-      </article>
-
-      <article class="nobackground">
-        <h3>Dependencies of classes are not explicit.</h3>
-        <pre class="java prettyprint">
-public class Account {
-
-  private TransferService transferService;
-
-  public <span class="highlight-good">Account(TransferService transferService)</span> {
-    <span class="highlight-good">this.transferService = transferService;</span>
-  }
-
-  public Receipt transferToThis(Account other, BigDecimal amount) {
-    return transferService.performTransfer(other, this, amount);
-  }
-}</pre>
-      <div class="build">
-        <p>Surprise, surprise: dependency injection</p>
-      </div>
-      </article>
-
-      <article class="nobackground">
-        <h3>That was only the tip of the iceberg.</h3>
-        <br>
-        <p style="text-align: center">
-          <img style="height: 500px" src="pics/feathers-book.jpg" alt="feathers-book">
-        </p>
+        <small>Test code is as important as production code</small>
       </article>
 
       <article class="nobackground">
