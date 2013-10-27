@@ -36,12 +36,12 @@
 
       <article class="nobackground">
         <h1>
-          Testing Knowledge
+          Testing, do you speak it?
         </h1>
         <p>
-          Felix Müller
+          Felix M&uuml;ller
           <br>
-          December 7th, 2012
+          <small>@fmueller_bln</small>
         </p>
         <p>
           <small>github.com/fmueller/testing-techtalk</small>
@@ -70,7 +70,7 @@
         <h1>Agenda</h1>
         <ol>
           <li>The Bigger Picture</li>
-          <li>Testing in Detail</li>
+          <li>Unit Testing in Detail</li>
           <li>Testing your Persistence Code</li>
           <li>Testing in Legacy Code</li>
         </ol>
@@ -85,7 +85,7 @@
 
       <article class="nobackground">
         <h1>
-          Which of you suspend writing tests due time pressure?
+          Who of you suspend writing tests due time pressure?
         </h1>
         <br>
         <small>Or lack of infrastructure, manpower, whatever.</small>
@@ -168,6 +168,16 @@
         </h1>
         <br>
         <small>Customers and managers do not care about it</small>
+        <br>
+        <small>... and they shouldn't!</small>
+      </article>
+
+      <article class="nobackground">
+        <h1>
+          But what else should they care about?
+        </h1>
+        <br>
+        
       </article>
 
       <article class="nobackground">
@@ -176,6 +186,24 @@
         </h1>
         <br>
         <small>Acceptance Test Driven Development</small>
+      </article>
+
+      <article class="nobackground">
+        <h3>Acceptance Test driven Development</h3>
+        <ul>
+          <li>specifications in form of automated tests</li>
+          <li>written by dev + domain experts</li>
+        </ul>
+        <div class="build">
+        <pre class="java prettyprint">
+Given I am searching on Etsy.com
+When I specify the Jewelry sub category
+And I search for ring
+Then there are search results</pre>
+        </div>
+        <div class="build">
+          <span>And: It works well with TDD.</span>
+        </div>
       </article>
 
       <article class="nobackground">
@@ -213,12 +241,11 @@
           <li>production-like systems are not running at beginning of project</li>
           <li>brittle staging systems</li>
           <li>distributed knowledge about infrastructure</li>
-          <li>many 3rd party systems are not always available</li>
           <li>bad specification of systems and libraries you use</li>
         </ul>
         <br>
         <div class="build">
-          <p><big>Nearly <b>impossible</b> to write end-to-end tests.</big></p>
+          <p><big>Nearly <b>impossible</b> to write acceptance tests that work end-to-end.</big></p>
         </div>
       </article>
 
@@ -232,8 +259,8 @@
         <br>
         A walking skeleton is:
         <ul class="build">
+          <li>implementation of small end-to-end function</li>
           <li>automatically buildable and deployable</li>
-          <li>automatically <b>testable</b></li>
           <li>start point for outside-in development</li>
         </ul>
         <br>
@@ -241,14 +268,13 @@
           <p>A walking skeleton can:</p>
         </div>
         <ul class="build">
-          <li>be valuable business action that is easy to implement</li>
           <li>help to measure performance of the team</li>
           <li>identifiy problems with tools or libraries early</li>
         </ul>
       </article>
 
       <article class="fill">
-        <h3>Part 2: Testing in Detail</h3>
+        <h3>Part 2: Unit Testing in Detail</h3>
         <p><img style="max-width: 100%; max-height: 100%" src="pics/f-microscopy.jpg" alt="f-microscopy"></p>
       </article>
 
@@ -320,7 +346,7 @@ public void <span class="highlight-good">beAwareOfLeapYears</span>() {
           <br>
             <pre class="java prettyprint">
 @Test
-public void someTestMethod() {
+public void testMethod() {
   // setup system
   // assert something
   // next action
@@ -346,7 +372,7 @@ public void someTestMethod() {
         <div class="build">
           <pre class="java prettyprint">
 @Test
-public void someTestMethod() {
+public void testMethod() {
   // given
   // when
   // then
@@ -412,10 +438,10 @@ public void jsonConverterShouldTransformIntoCorrectPerson() {
 @Test
 public void jsonConverterShouldTransformIntoCorrectPerson() {
   Person person = converter.transform(/* json input */);
-  <span class="highlight-good">assertPersonEquals</span>(new Person("Max", "Mustermann", 40), person);
+  <span class="highlight-good">assertPerson</span>(new Person("Max", "Mustermann", 40), person);
 }
 
-private void assertPersonEquals(Person expected, Person actual) {
+private void assertPerson(Person expected, Person actual) {
   assertEquals(expected.getFirstName(), actual.getFirstName());
   assertEquals(expected.getSurname(), actual.getSurname());
   assertEquals(expected.getAge(), actual.getAge());
@@ -509,14 +535,14 @@ private void assertPersonEquals(Person expected, Person actual) {
 
       <article class="nobackground">
         <h1>
-          To commit or not to commit?
+          To commit, or not to commit?
         </h1>
         <br>
         <small>(That is the question)</small>
       </article>
 
       <article class="nobackground">
-        <h3>To commit or not to commit?</h3>
+        <h3>To commit, or not to commit?</h3>
         <br>
         <div class="build">
           <p>Common pattern:</p>
@@ -671,18 +697,16 @@ public class Account {
         </p>
       </article>
 
-      <article class="nobackground">
+      <article class="nobackground" style="text-align: center">
         <h3>Thanks for listening!</h3>
         <br>
-        <p><small>If you want to stay in contact:</small></p>
+        <p><small>github.com/fmueller/testing-techtalk</small></p>
         <br>
         <div>
-            <p><small>cupofjava.de</small></p>
             <p><small>@fmueller_bln</small></p>
             <p><small>gplus.to/fmueller</small></p>
+            <p><small>cupofjava.de</small></p>
         </div>
-        <br>
-        <p><small>Slides: github.com/fmueller/testing-techtalk</small></p>
       </article>
 
       <article class="smaller">
